@@ -41,4 +41,6 @@ Route::get('/subjects', function () {
     return Subject::all(['id', 'name']);
 });
 
+Route::get("user/{id}", [TeacherController::class, 'getUserById']);
+
 Route::get("teacher/approved/{id}", [TeacherController::class, 'approved']);

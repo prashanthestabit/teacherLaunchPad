@@ -94,6 +94,20 @@ class TeacherController extends Controller
         }
     }
 
+    public function getUserById($id)
+    {
+        try {
+            $user = User::whereId($id)->first();
+                return response()->json([
+                    'user' => $user,
+                ], 200);
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['error' => __('messages.error')], 500);
+        }
+    }
+
     /**
      * For User Register
      *
